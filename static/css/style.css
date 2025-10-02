@@ -1,136 +1,192 @@
-/* Estilos gerais para o corpo da página */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+/* Importa uma fonte moderna do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Variáveis de Cor para fácil customização */
+:root {
+    --primary-color: #4f46e5; /* Um índigo moderno */
+    --primary-hover: #4338ca;
+    --background-color: #f8fafc; /* Um cinza bem claro */
+    --card-background: #ffffff;
+    --text-color: #334155;
+    --border-color: #cbd5e1;
+    --success-bg: #dcfce7;
+    --success-text: #166534;
+    --error-bg: #fee2e2;
+    --error-text: #991b1b;
+}
+
+/* Reset básico e estilos gerais */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
-/* Container principal para centralizar o conteúdo */
-.container {
-    width: 80%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    flex-grow: 1;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
-/* Estilos para a barra de navegação */
+/* Cabeçalho e Navegação */
 header {
-    background-color: #5a67d8;
-    color: white;
+    background-color: var(--card-background);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 nav {
-    width: 80%;
+    max-width: 1100px;
     margin: 0 auto;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-nav h1 {
-    margin: 0;
-    font-size: 1.5em;
+nav h1 a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.8rem;
 }
 
 nav ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
-}
-
-nav ul li {
-    margin-left: 20px;
+    gap: 25px;
 }
 
 nav a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: var(--primary-color);
 }
 
-/* Estilos para formulários */
+/* Container Principal (estilo card) */
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Estilos para Formulários Modernos */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaçamento entre os elementos do formulário */
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
+    gap: 20px;
 }
 
 form label {
-    margin-bottom: 5px;
-    font-weight: bold;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
 }
 
-form input, form select, form button {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
+form input, form select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Estilos para botões */
+form input:focus, form select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+/* Botões */
 button {
-    background-color: #5a67d8;
+    background-color: var(--primary-color);
     color: white;
     border: none;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #434190;
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
 }
 
-/* Estilos para tabelas (usada no dashboard) */
-table {
-    width: 100%;
-    border-collapse: collapse;
+/* Links e textos auxiliares */
+p {
+    text-align: center;
     margin-top: 20px;
 }
 
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Tabela (Dashboard) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px 15px;
     text-align: left;
+    border-bottom: 1px solid var(--border-color);
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #f1f5f9;
+    font-weight: 600;
 }
 
-/* Mensagens de feedback (flash messages) */
+td {
+    vertical-align: middle;
+}
+
+/* Mensagens Flash */
 .flash-message {
     padding: 15px;
     margin-bottom: 20px;
-    border-radius: 4px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
 }
+
 .flash-success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background-color: var(--success-bg);
+    color: var(--success-text);
 }
-.flash-error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+
+.flash-danger { /* Usei danger para combinar com o app.py */
+    background-color: var(--error-bg);
+    color: var(--error-text);
 }
