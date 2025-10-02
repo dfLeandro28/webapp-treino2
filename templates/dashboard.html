@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Seu Dashboard{% endblock %}
+
+{% block content %}
+    <h2>Seus Treinos Registrados</h2>
+    <p>Olá, {{ nome_usuario }}! Acompanhe sua evolução.</p>
+
+    <a href="{{ url_for('adicionar_treino') }}"><button>Registrar Novo Treino</button></a>
+
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Exercício</th>
+                <th>Peso (kg)</th>
+                <th>Séries</th>
+                <th>Repetições</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for treino in treinos %}
+            <tr>
+                <td>{{ treino.data_treino.strftime('%d/%m/%Y') }}</td>
+                <td>{{ treino.nome_exercicio }}</td>
+                <td>{{ treino.peso_levantado_kg }}</td>
+                <td>{{ treino.series }}</td>
+                <td>{{ treino.repeticoes }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5">Nenhum treino registrado ainda.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
