@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Registar Treino{% endblock %}
+
+{% block content %}
+    <h2>Registar Novo Treino</h2>
+    
+    <!-- Formulário para enviar os dados para a rota '/adicionar_treino' em app.py -->
+    <form method="POST" action="{{ url_for('adicionar_treino') }}">
+        <div>
+            <label for="nome_exercicio">Nome do Exercício:</label>
+            <input type="text" id="nome_exercicio" name="nome_exercicio" required placeholder="Ex: Supino Reto">
+        </div>
+        <div>
+            <label for="peso">Peso Levantado (kg):</label>
+            <input type="number" step="0.5" id="peso" name="peso" required placeholder="Ex: 80.5">
+        </div>
+        <div>
+            <label for="series">Número de Séries:</label>
+            <input type="number" id="series" name="series" required placeholder="Ex: 4">
+        </div>
+        <div>
+            <label for="repeticoes">Repetições por Série:</label>
+            <input type="number" id="repeticoes" name="repeticoes" required placeholder="Ex: 10">
+        </div>
+        <button type="submit">Salvar Treino</button>
+    </form>
+    
+    <br>
+    <a href="{{ url_for('dashboard') }}">Voltar para o Dashboard</a>
+{% endblock %}
