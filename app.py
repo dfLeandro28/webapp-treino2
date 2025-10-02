@@ -12,8 +12,8 @@ app = Flask(__name__)
 # 3. Configuração da Conexão com o Banco de Dados MySQL
 #    !!!! IMPORTANTE: Substitua com suas credenciais do MySQL !!!!
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'LELEKO'      # Ex: 'root'
-app.config['MYSQL_PASSWORD'] = 'LF5632' # Ex: '12345'
+app.config['MYSQL_USER'] = 'lele_trab'      # Ex: 'root'
+app.config['MYSQL_PASSWORD'] = 'lf28' # Ex: '12345'
 app.config['MYSQL_DB'] = 'academia_db'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor' # Retorna os resultados como dicionários
 
