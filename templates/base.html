@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- O título da página será definido por cada página filha -->
+    <title>{% block title %}App de Treino{% endblock %}</title>
+    <!-- Link para o ficheiro de CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Cabeçalho com a navegação -->
+    <header>
+        <nav>
+            <h1><a href="{{ url_for('dashboard') }}">GymApp</a></h1>
+            <ul>
+                <!-- Estes links são para utilizadores já autenticados -->
+                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('logout') }}">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Container principal para o conteúdo -->
+    <main class="container">
+        <!-- Bloco para exibir mensagens de feedback (flash messages) -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- O conteúdo específico de cada página será injetado aqui -->
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>
