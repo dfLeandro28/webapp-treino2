@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- O título da página será definido por cada página filha -->
     <title>{% block title %}App de Treino{% endblock %}</title>
-    <!-- Link para o ficheiro de CSS -->
+    
+    <!-- Linhas novas para importar a fonte Poppins do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link para o seu ficheiro de CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -39,3 +45,4 @@
 
 </body>
 </html>
+
