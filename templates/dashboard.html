@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}Seu Dashboard{% endblock %}
+{% block title %}Tela Inicial{% endblock %}
 
 {% block content %}
-    <h2>Seus Treinos Registrados</h2>
-    <p>Olá, {{ nome_usuario }}! Acompanhe sua evolução.</p>
+    <h2>Os seus Treinos Registados</h2>
+    
+    <!-- Fraseologia alterada -->
+    <p style="text-align: center; font-size: 1.1rem; color: #d1d5db;">Seja bem-vindo, vamos acompanhar os seus treinos.</p>
 
-    <a href="{{ url_for('adicionar_treino') }}"><button>Registrar Novo Treino</button></a>
-
-    <hr>
+    <!-- Botão de Registar Treino agora é maior e mais destacado -->
+    <a href="{{ url_for('adicionar_treino') }}" class="cta-button">Registar Novo Treino</a>
 
     <table>
         <thead>
@@ -31,9 +32,10 @@
             </tr>
             {% else %}
             <tr>
-                <td colspan="5">Nenhum treino registrado ainda.</td>
+                <td colspan="5" style="text-align: center;">Nenhum treino registado ainda.</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 {% endblock %}
+
