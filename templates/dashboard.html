@@ -1,41 +1,45 @@
-{% extends 'base.html' %}
-
-{% block title %}Tela Inicial{% endblock %}
-
-{% block content %}
-    <h2>Os seus Treinos Registados</h2>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}App de Treino{% endblock %}</title>
     
-    <!-- Fraseologia alterada -->
-    <p style="text-align: center; font-size: 1.1rem; color: #d1d5db;">Seja bem-vindo, vamos acompanhar os seus treinos.</p>
+    <!-- Links para importar a fonte Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ligação para a sua folha de estilos -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
 
-    <!-- Botão de Registar Treino agora é maior e mais destacado -->
-    <a href="{{ url_for('adicionar_treino') }}" class="cta-button">Registar Novo Treino</a>
+    <header>
+        <nav>
+            <h1><a href="{{ url_for('dashboard') }}">GymApp</a></h1>
+            <ul>
+                <!-- Fraseologia do menu alterada -->
+                <li><a href="{{ url_for('dashboard') }}">Tela Inicial</a></li>
+                <li><a href="{{ url_for('logout') }}">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Data</th>
-                <th>Exercício</th>
-                <th>Peso (kg)</th>
-                <th>Séries</th>
-                <th>Repetições</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for treino in treinos %}
-            <tr>
-                <td>{{ treino.data_treino.strftime('%d/%m/%Y') }}</td>
-                <td>{{ treino.nome_exercicio }}</td>
-                <td>{{ treino.peso_levantado_kg }}</td>
-                <td>{{ treino.series }}</td>
-                <td>{{ treino.repeticoes }}</td>
-            </tr>
-            {% else %}
-            <tr>
-                <td colspan="5" style="text-align: center;">Nenhum treino registado ainda.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% endblock %}
+    <main class="container">
+        <!-- Bloco para exibir mensagens de feedback (flash) -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- O conteúdo específico de cada página será injetado aqui -->
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>
 
